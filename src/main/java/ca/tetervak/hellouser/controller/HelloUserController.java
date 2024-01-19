@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class HelloUserController {
 
-    private Logger log = LoggerFactory.getLogger(HelloUserController.class);
+    private final Logger log = LoggerFactory.getLogger(HelloUserController.class);
 
     @GetMapping("/")
     public String input(){
