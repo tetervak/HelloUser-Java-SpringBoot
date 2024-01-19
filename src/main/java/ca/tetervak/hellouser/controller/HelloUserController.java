@@ -1,18 +1,20 @@
 package ca.tetervak.hellouser.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HelloUserController {
 
     @GetMapping("/")
-    public ModelAndView output(){
+    public String output(Model model){
 
         var userName = "Jane";
 
-        return new ModelAndView("Output", "name", userName);
+        model.addAttribute("name", userName);
+
+        return "Output";
     }
 
 }
