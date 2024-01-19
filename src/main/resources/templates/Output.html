@@ -10,7 +10,16 @@
         <h1>Output</h1>
     </header>
     <main>
-        <h2>Hello <span th:text="${name}">Sheridan</span>!</h2>
+        <h2>Hello <span th:text="|${appUser.firstName} ${appUser.lastName}|">Sheridan</span>!</h2>
+
+        <p>
+            First Name: <span th:text="${appUser.firstName}">Harry</span>
+        </p>
+
+        <p>
+            First Name: <span th:text="${appUser.lastName}">Potter</span>
+        </p>
+
     </main>
     <footer>
         <p>
