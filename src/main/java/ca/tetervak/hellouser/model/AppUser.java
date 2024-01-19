@@ -1,8 +1,12 @@
 package ca.tetervak.hellouser.model;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class AppUser {
 
+    @NotBlank
     private String firstName;
+    @NotBlank
     private String lastName;
 
     public AppUser(String firstName, String lastName) {

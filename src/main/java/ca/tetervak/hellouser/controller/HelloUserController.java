@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,14 +26,20 @@ public class HelloUserController {
 
     @GetMapping("/output")
     public String output(
-            @ModelAttribute AppUser user,
+            @Validated @ModelAttribute AppUser appUser,
+            BindingResult bindingResult,
             Model model){
 
         log.trace("called output()");
 
-        log.debug("user = " + user);
+        log.debug("user = " + appUser);
 
-        model.addAttribute("appUser", user);
+
+        model.addAttribute("appUser", appUser);
+
+        if(bindingResult.hasErrors()){
+            return "Retry";
+        }
 
         return "Output";
     }
