@@ -17,8 +17,9 @@ public class HelloUserController {
     private final Logger log = LoggerFactory.getLogger(HelloUserController.class);
 
     @GetMapping("/")
-    public String input(){
+    public String input(Model model){
         log.trace("called input()");
+        model.addAttribute("appUser", new AppUser());
         return "Input";
     }
 
@@ -37,7 +38,7 @@ public class HelloUserController {
         model.addAttribute("appUser", appUser);
 
         if(bindingResult.hasErrors()){
-            return "Retry";
+            return "Input";
         }
 
         return "Output";
